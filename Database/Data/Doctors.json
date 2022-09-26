@@ -1,0 +1,8 @@
+[{"name":"Trung","slot":2,"specialist":"IJR","patients":[1,2]},
+{"name":"Lý","slot":3,"specialist":"ENT","patients":[1,2]},
+{"name":"Tâm","slot":2,"specialist":"IJR","patients":[1,2]},
+{"name":"Hải","slot":4,"specialist":"ENT","patients":[1,2]},
+{"name":"Trường","slot":3,"specialist":"EYE","patients":[1,2]},
+{"name":"Minh","slot":2,"specialist":"EYE","patients":[1,1]},
+{"name":"Nhân","slot":4,"specialist":"HEA","patients":[1,2]},
+{"name":"Long","slot":2,"specialist":"HEA","patients":[1,2]}]

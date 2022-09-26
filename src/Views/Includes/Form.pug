@@ -1,0 +1,27 @@
+.container
+    .row
+        .cod-lg-8.col-8.mx-auto
+            .booking-form
+                h2.text-center.mb-lg-3.mb-2 Add Patients Form
+                    form(action="/lobby/submit" role="form" id="form" name="form" method="post")
+                        .row
+                            -
+                                var number = datapatients.length;
+                            .col-lg-6.cod-12
+                                input(type="text" name="name" id="name" class="form-control" placeholder="Full name" required)
+                            .col-lg-6.cod-12
+                                input(type="age" name="age" id="age" pattern="{1-100}" class="form-control" placeholder="Age" required)
+                            .col-lg-6.cod-12
+                                select(type="gender" name="gender" class="form-control" required)
+                                    option(selected value="") Choose your gender
+                                    each value in datagenders
+                                        option=value.value
+                            .col-lg-6.cod-12
+                                select(type="disease" name="disease" class="form-control" required)
+                                    option(selected value="") Choose your disease
+                                    each value in datadiseases
+                                        option=value.disease
+                            .col-lg-12.cod-12
+                                textarea(class="form-control" rows="5" id="message" name="message" placeholder="Additional Message")
+                            .col-lg-3.col-md-4.col-6.mx-auto.text-center
+                                button(type="submit" class="form-control" id="submit-button") Submit

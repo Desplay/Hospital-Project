@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    head
+        include Includes/Link Head
+    body#top
+        main
+            nav.navbar.navbar-expand-lg.bg-light.fixed-top.shadow-lg
+                .container
+                    div.collapse.navbar-collapse
+                        ul.navbar-nav.mx-auto
+                            li.nav-item
+                                a.nav-link(href='/queue-room') Quere Room
+                            li.nav-item
+                                a.nav-link(href='/lobby') Lobby
+                            li.nav-item
+                                a.nav-link(href='/doctor-room') Dortor Room
+        include Includes/Backgrounds
+        footer.site-footer.section-padding
+            include Includes/Footer
+include Includes/Script Tail

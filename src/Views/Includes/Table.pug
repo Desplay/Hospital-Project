@@ -1,0 +1,38 @@
+.container-fluid
+    .card.shadow.mb-4
+        .card-header.py-3
+            h6(class="m-0 font-weight-bold text-primary") Patients
+        .card-body
+            .table-responsive
+                .dataTables_wrapper.dt-bootstrap4
+                    .row
+                        .col-sm-12
+                            table(class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;")
+                                thead
+                                    tr
+                                        th #
+                                        th Name
+                                        th Age
+                                        th Gender
+                                        th Time Add
+                                        th Disease
+                                        th Additional message
+                                tfoot
+                                    tr
+                                        th #
+                                        th Name
+                                        th Age
+                                        th Gender
+                                        th Time Add
+                                        th Disease
+                                        th Additional message
+                                tbody
+                                    each patient in datapatients
+                                        tr
+                                            td #{patient.ID}
+                                            td #{patient.Partient.name}
+                                            td #{patient.Partient.age}
+                                            td #{patient.Partient.gender}
+                                            td #{patient.Partient.gender}
+                                            td #{patient.Partient.disease}
+                                            td #{patient.Partient.message}
