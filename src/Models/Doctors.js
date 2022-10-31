@@ -23,9 +23,9 @@ const CheckDiseases = (inputPatients, inputDoctors) => {
   const Doctor = inputDoctors.find(
     (p) =>
       p.Doctor.specialist === PatientDisease.specialist &&
-      p.Doctor.patients < p.Doctor.slot
+      p.Doctor.patients.length < p.Doctor.slot
   );
-  if (Doctor.Doctor.ID === undefined) {
+  if (Doctor === undefined) {
     return null;
   }
   return {
@@ -36,10 +36,10 @@ const CheckDiseases = (inputPatients, inputDoctors) => {
 
 module.exports = class Doctors {
   static move(PatientsList) {
-    fs.readFile(PathPatientsTreated, (err, savePartient) => {
+    fs.readFile(PathPatientsTreated, (err,Partient) => {
       let List = [];
       if (!err) {
-        List = JSON.parse(savePartient);
+        List = JSON.parse(Partient);
       }
       for (var i = 0; i < PatientsList.length; i++) {
         const temp = CheckDiseases(PatientsList[i], this.return());

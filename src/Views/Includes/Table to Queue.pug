@@ -1,0 +1,41 @@
+.container-fluid
+    .card.shadow.mb-4
+        .card-header.py-3
+            h6(class="m-0 font-weight-bold text-primary") Disease level table
+        .card-body
+            .table-responsive
+                .dataTables_wrapper.dt-bootstrap4
+                    .row
+                        .col-sm-12
+                            table(class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;")
+                                thead
+                                    tr
+                                        th #
+                                        th Name
+                                        th Age
+                                        th Gender
+                                        th Time Add
+                                        th Disease
+                                        th Additional message
+                                tfoot
+                                    tr
+                                        th #
+                                        th Name
+                                        th Age
+                                        th Gender
+                                        th Time Add
+                                        th Disease
+                                        th Additional message
+                                tbody
+                                    - var x = 0;
+                                    each patient in datapatients
+                                        tr
+                                            td #{++x}
+                                            td 
+                                                - var link = "/edit-patient-" + patient.IDCode
+                                                a(href=link)._parent #{patient.Patient.name}
+                                            td #{patient.Patient.age}
+                                            td #{patient.Patient.gender}
+                                            td #{patient.Patient.date}
+                                            td #{patient.Patient.disease}
+                                            td #{patient.Patient.message}

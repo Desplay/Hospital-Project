@@ -27,16 +27,17 @@
                                         th Disease
                                         th Additional message
                                 tbody
-                                    - var x = 1;
+                                    - var x = 0;
                                     each patient in datapatients
-                                        tr
-                                            td #{x}
-                                            td 
-                                                - var link = "/edit-patient-" + patient.IDCode
-                                                a(href=link)._parent #{patient.Patient.name}
-                                            td #{patient.Patient.age}
-                                            td #{patient.Patient.gender}
-                                            td #{patient.Patient.date}
-                                            td #{patient.Patient.disease}
-                                            td #{patient.Patient.message}
-                                            - x++;
+                                        - var check = x < 3;
+                                            if(check)
+                                                tr
+                                                    td #{++x}
+                                                    td 
+                                                        - var link = "/edit-patient-" + patient.IDCode
+                                                        a(href=link)._parent #{patient.Patient.name}
+                                                    td #{patient.Patient.age}
+                                                    td #{patient.Patient.gender}
+                                                    td #{patient.Patient.date}
+                                                    td #{patient.Patient.disease}
+                                                    td #{patient.Patient.message}
