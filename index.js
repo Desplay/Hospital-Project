@@ -28,4 +28,4 @@ app.use((req, res, next) => {
   res.status(404).render(path.join(PathFolder.pathViews, "404.pug"));
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 5000);
