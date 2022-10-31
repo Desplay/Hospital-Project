@@ -4,7 +4,6 @@
   "description": "by DesplayShido",
   "main": "index.js",
   "scripts": {
-    "test": "--check",
     "start": "node index.js"
   },
   "author": "Desplay",
