@@ -2,7 +2,7 @@ doctype html
 html(lang="en")
     head
         include Includes/Link Head
-        title Patients Room
+        title Edit Patient
     body#top
         main
             nav.navbar.navbar-expand-lg.bg-light.fixed-top.shadow-lg
@@ -10,10 +10,11 @@ html(lang="en")
                     div.collapse.navbar-collapse
                         ul.navbar-nav.mx-auto
                             li.nav-item
-                                a.navbar-brand.d-none.d-lg-block(href='/quere-room') Queue Room
+                                a.nav-link(href='/queue-room') Queue Room
                             li.nav-item
                                 a.nav-link(href='/lobby') Lobby Room
-            h1 Patients Room
-    footer.site-footer.section-padding
-        include Includes/Footer
+            section.section-padding
+                include Includes/Edit Form
+        footer.site-footer.section-padding
+            include Includes/Footer
 include Includes/Script Tail

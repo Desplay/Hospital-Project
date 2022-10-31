@@ -1,7 +1,7 @@
 .container-fluid
     .card.shadow.mb-4
         .card-header.py-3
-            h6(class="m-0 font-weight-bold text-primary") Disease level table
+            h6(class="m-0 font-weight-bold text-primary") Patients Treated
         .card-body
             .table-responsive
                 .dataTables_wrapper.dt-bootstrap4
@@ -17,6 +17,7 @@
                                         th Time Add
                                         th Disease
                                         th Additional message
+                                        th
                                 tfoot
                                     tr
                                         th #
@@ -26,17 +27,20 @@
                                         th Time Add
                                         th Disease
                                         th Additional message
+                                        th
                                 tbody
-                                    - var x = 1;
+                                    - var x = 0;
                                     each patient in datapatients
-                                        tr
-                                            td #{x}
-                                            td 
-                                                - var link = "/edit-patient-" + patient.IDCode
-                                                a(href=link)._parent #{patient.Patient.name}
-                                            td #{patient.Patient.age}
-                                            td #{patient.Patient.gender}
-                                            td #{patient.Patient.date}
-                                            td #{patient.Patient.disease}
-                                            td #{patient.Patient.message}
-                                            - x++;
+                                        - var check = patient.treatedBy === datadoctors.Doctor.ID
+                                        if(check)
+                                            tr
+                                                td #{++x}
+                                                td #{patient.Patient.Patient.name}
+                                                td #{patient.Patient.Patient.age}
+                                                td #{patient.Patient.Patient.gender}
+                                                td #{patient.Patient.Patient.date}
+                                                td #{patient.Patient.Patient.disease}
+                                                td #{patient.Patient.Patient.message}
+                                                td
+                                                    - var link = "/doctor-" + datadoctors.Doctor.ID + "-" + patient.ID +"/submit";
+                                                    a(href=link)._parent Done

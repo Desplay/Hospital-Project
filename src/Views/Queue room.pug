@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+    head
+        include Includes/Link Head
+        title Queue Room
+    body#top
+        main
+            nav.navbar.navbar-expand-lg.bg-light.fixed-top.shadow-lg
+                .container
+                    div.collapse.navbar-collapse
+                        ul.navbar-nav.mx-auto
+                            li.nav-item
+                                a.navbar-brand.d-none.d-lg-block(href='/queue-room') Queue Room
+                            li.nav-item
+                                a.nav-link(href='/lobby') Lobby Room
+            .container-fluid
+                .row
+                    each doctor in datadoctors
+                        include Includes/Card Doctor
+            - var check = datapatients.length > 0
+            if(check)
+                .container-fluid
+                    .col-xl-3.col-md-6.mb-4
+                        h3.m-0.font-weight-bold.text-primary.text-gray-800 Patients in queue room to be moved to the doctor's room
+                        .my-2
+                            a(href="/queue-room/submit" class="btn btn-secondary btn-icon-split")
+                                span(class="icon text-gray-600")
+                                    i(class="fas fa-arrow-right")
+                                span(class="text") Put patients to doctor
+                include Includes/Table
+    footer.site-footer.section-padding
+        include Includes/Footer
+include Includes/Script Tail

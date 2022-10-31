@@ -2,21 +2,22 @@ doctype html
 html(lang="en")
     head
         include Includes/Link Head
-    body
+        title Add Patients Form
+    body#top
         main
             nav.navbar.navbar-expand-lg.bg-light.fixed-top.shadow-lg
                 .container
                     div.collapse.navbar-collapse
                         ul.navbar-nav.mx-auto
                             li.nav-item
-                                a.nav-link(href='/queue-room') Quere Room
+                                a.nav-link(href='/queue-room') Queue Room
                             li.nav-item
-                                a.navbar-brand.d-none.d-lg-block(href='/lobby') Lobby
-                            li.nav-item
-                                a.nav-link(href='#doctor-room') Dortor Room
+                                a.navbar-brand.d-none.d-lg-block(href='/lobby') Lobby Room
         section.section-padding
             include Includes/Form
-        include Includes/Table
+        - var check = datapatients.length > 0
+        if(check)
+            include Includes/Table
     footer.site-footer.section-padding
         include Includes/Footer
 include Includes/Script Tail

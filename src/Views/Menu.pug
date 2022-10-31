@@ -2,6 +2,7 @@ doctype html
 html(lang="en")
     head
         include Includes/Link Head
+        title Menu
     body#top
         main
             nav.navbar.navbar-expand-lg.bg-light.fixed-top.shadow-lg
@@ -9,11 +10,9 @@ html(lang="en")
                     div.collapse.navbar-collapse
                         ul.navbar-nav.mx-auto
                             li.nav-item
-                                a.nav-link(href='/queue-room') Quere Room
+                                a.nav-link(href='/queue-room') Queue Room
                             li.nav-item
-                                a.nav-link(href='/lobby') Lobby
-                            li.nav-item
-                                a.nav-link(href='/doctor-room') Dortor Room
+                                a.nav-link(href='/lobby') Lobby Room
         include Includes/Backgrounds
         footer.site-footer.section-padding
             include Includes/Footer

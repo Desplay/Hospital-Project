@@ -1,0 +1,37 @@
+.container
+    .row
+        img(src="./Templates/images/profile.png" class="img-fluid" alt="" style="margin:auto;display:block;width:300px;height:auto;")
+        .cod-lg-8.col-8.mx-auto
+            .booking-form
+                h2.text-center.mb-lg-3.mb-2 EDIT PATIENT
+                form(action="/edit-patient/submit" role="form" id="form" name="form" method="post")
+                    .row
+                        - var IDCode = patient.IDCode;
+                        input(type="hidden" name="ID" id="ID" value=IDCode)
+                        .col-lg-6.cod-12
+                            - var name = patient.Patient.name;
+                            input(type="text" name="name" id="name" class="form-control" placeholder="Full name" value=name required)
+                        .col-lg-6.cod-12
+                            - var age = patient.Patient.age;
+                            input(type="age" name="age" id="age" pattern="{1-100}" class="form-control" placeholder="Age" value=age required)
+                        .col-lg-6.cod-12
+                            - var gender = patient.Patient.gender;
+                            select(type="gender" name="gender" class="form-control" required)
+                                option #{gender}
+                                each value in datagenders
+                                    - var check = gender !== value.value;
+                                    if check
+                                        option=value.value
+                        .col-lg-6.cod-12
+                            - var disease = patient.Patient.disease;
+                            select(type="disease" name="disease" class="form-control" required)
+                                option #{disease}
+                                each value in datadiseases
+                                    - var check = disease !== value.disease;
+                                    if check
+                                        option=value.disease
+                        .col-lg-12.cod-12
+                            - var message = patient.Patient.message;
+                            textarea(class="form-control" rows="5" id="message" name="message" placeholder="Additional Message") #{message}
+                        .col-lg-3.col-md-4.col-6.mx-auto.text-center
+                            button(type="submit" class="form-control" id="submit-button") Submit
