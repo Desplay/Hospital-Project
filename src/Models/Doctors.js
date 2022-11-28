@@ -3,28 +3,10 @@ const path = require("path");
 const PathFolder = require("../Utils/Path");
 
 const PatientsData = require(path.join(PathFolder.pathModels, "Patients"));
-const PathDataDoctors = path.join(PathFolder.pathData, "Data", "Doctors.json");
-const PathPatientsTreated = path.join(
-  PathFolder.pathData,
-  "Data",
-  "Patients treated.json"
-);
-
-const DiseasesList = JSON.parse(
-  fs.readFileSync(
-    path.join(PathFolder.pathData, "Data", "Kind of diseases.json")
-  )
-);
 
 const CheckDiseases = (inputPatients, inputDoctors) => {
-  const PatientDisease = DiseasesList.find(
-    (p) => p.disease === inputPatients.Patient.disease
-  );
-  const Doctor = inputDoctors.find(
-    (p) =>
-      p.Doctor.specialist === PatientDisease.specialist &&
-      p.Doctor.patients.length < p.Doctor.slot
-  );
+  const PatientDisease = DiseasesList.find((p) => p.disease === inputPatients.Patient.disease);
+  const Doctor = inputDoctors.find((p) => p.Doctor.specialist === PatientDisease.specialist && p.Doctor.patients.length < p.Doctor.slot);
   if (Doctor === undefined) {
     return null;
   }
@@ -36,7 +18,7 @@ const CheckDiseases = (inputPatients, inputDoctors) => {
 
 module.exports = class Doctors {
   static move(PatientsList) {
-    fs.readFile(PathPatientsTreated, (err,Partient) => {
+    fs.readFile(PathPatientsTreated, (err, Partient) => {
       let List = [];
       if (!err) {
         List = JSON.parse(Partient);
