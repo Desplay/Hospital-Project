@@ -1,4 +1,4 @@
-.container-fluid
+.container-fluid#TablePatients
     .card.shadow.mb-4
         .card-header.py-3.d-flex.justify-content-between.align-items-center
             h4(class="m-0 font-weight-bold text-primary") Disease level table
@@ -7,7 +7,7 @@
                     span.text Move Patients
                     span.icon.text-white-50
                         i.fas.fa-arrow-right
-                
+
         .card-body
             .table-responsive
                 .dataTables_wrapper.dt-bootstrap4
@@ -33,17 +33,56 @@
                                         th Disease
                                         th Additional message
                                 tbody
-                                    - var x = 0;
-                                    each patient in datapatients
-                                        - var check = x < 3;
-                                            if(check)
-                                                tr
-                                                    td #{++x}
-                                                    td 
-                                                        - var link = "/edit-patient-" + patient.IDCode
-                                                        a(href=link)._parent #{patient.name}
-                                                    td #{patient.age}
-                                                    td #{patient.gender.value}
-                                                    td #{patient.date}
-                                                    td #{patient.disease.name}
-                                                    td #{patient.message}
+script(src="/socket.io/socket.io.js")
+script.
+    const socket = io();
+    const refresh = (data) => {
+        const table = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
+        if(data.length === 0) document.getElementById("TablePatients").style.display = "none";
+        else document.getElementById("TablePatients").style.display = "block";
+        table.innerHTML="";
+        data.map((element, index) => {
+            if(index < 3) {
+                let Row = document.createElement("tr");
+
+                let Number = document.createElement("td");
+                Number.textContent = index + 1;
+
+                let Name = document.createElement("td");
+                let link = document.createElement("a");
+                link.classList.add("_parent");
+                let linkTitle = document.createTextNode(element.name);
+                link.appendChild(linkTitle);
+                link.title = element.name;
+                link.href = "/edit-patient-" + element.IDCode;
+                Name.appendChild(link);
+
+                let Age = document.createElement("td");
+                Age.textContent = element.age;
+
+                let Gender = document.createElement("td");
+                Gender.textContent = element.gender.value;
+
+                let Date = document.createElement("td");
+                Date.textContent = element.date;
+
+                let Disease = document.createElement("td");
+                Disease.textContent = element.disease.name;
+
+                let Message = document.createElement("td");
+                Message.textContent = element.message;
+
+                Row.appendChild(Number);
+                Row.appendChild(Name);
+                Row.appendChild(Age);
+                Row.appendChild(Gender);
+                Row.appendChild(Date);
+                Row.appendChild(Disease);
+                Row.appendChild(Message);
+                table.appendChild(Row);
+                }
+            })
+        }
+    socket.on("syncLobby", (data) => {
+        refresh(data);
+    })

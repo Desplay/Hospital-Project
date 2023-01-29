@@ -8,8 +8,8 @@
                         .text-xs.font-weight-bold.text-info.text-uppercase.mb-1 Doctor #{doctor.Doctor.name}
                         .row.no-gutters.align-items-center
                             .col-auto
-                                - var percent ="width: " + Math.floor(doctor.Doctor.patients.length / doctor.Doctor.slot * 100) + '%';
-                                - var slot_empty = doctor.Doctor.patients.length + '/' + doctor.Doctor.slot;
+                                - var percent ="width: " + Math.floor(doctor.treatPatients.Return().length / doctor.Doctor.slot * 100) + '%';
+                                - var slot_empty = doctor.treatPatients.Return().length + '/' + doctor.Doctor.slot;
                                 .h5.mb-0.mr-3.font-weight-bold.text-gray-800 #{slot_empty}
                             .col
                                 .progress.progress-sm.mr-2

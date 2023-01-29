@@ -6,12 +6,16 @@ const DoctorsData = require(path.join(PathFolder.pathModels, "Doctors"));
 exports.getQueueRoom = async (req, res, next) => {
   const Path = path.join(PathFolder.pathViews, "/Queue room.pug");
   res.render(Path, {
-    datapatients: (datapatients = PatientsData.return()),
-    datadoctors: (datadoctors = DoctorsData.return()),
+    datapatients: (datapatients = PatientsData.ReturnDataPatientsQueue()),
+    datadoctors: (datadoctors = DoctorsData.DataRender()),
   });
 };
 
 exports.postMovePatients = (req, res, next) => {
-  DoctorsData.move(PatientsData.return());
+  const DoctorTreat = DoctorsData.checkTreat(PatientsData.firstPatientQueue());
+  if (DoctorTreat) {
+    DoctorsData.AddPatient(DoctorTreat, PatientsData.popPatientQueue());
+  }
+  console.log(DoctorsData.DataRender());
   res.redirect("/queue-room");
 };

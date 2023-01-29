@@ -3,38 +3,8 @@ class Node {
     this.value = value;
     this.right = null;
     this.left = null;
-    this.count = 0;
   }
 }
-
-const kthSmallestNode = (node) => {
-  while (!node.left === null) node = node.left;
-  return node;
-};
-
-const removeNode = (root, value) => {
-  if (root === null) return root;
-  if (value === root.value.IDCode) {
-    if (root.left === null && root.right === null) {
-      return null;
-    } else if (root.left === null) {
-      return root.right;
-    } else if (root.right === null) {
-      return root.left;
-    } else {
-      let tempNode = kthSmallestNode(root.right);
-      root.value = tempNode.value.IDCode;
-      root.right = removeNode(root.right, tempNode.value);
-      return root;
-    }
-  } else if (value < root.value) {
-    root.left = removeNode(root.left, value);
-    return root;
-  } else {
-    root.right = removeNode(root.right, value);
-    return root;
-  }
-};
 
 const maxValue = (root) => {
   let max = root.value;
@@ -45,19 +15,6 @@ const maxValue = (root) => {
   return max;
 };
 
-const findInRoot = (root, value) => {
-  if (!root) return undefined;
-  let current = root;
-  found = false;
-  while (current && !found) {
-    if (value < current.value.IDCode) current = current.left;
-    else if (value > current.value.IDCode) current = current.right;
-    else found = true;
-  }
-  if (!found) return null;
-  return current;
-};
-
 const RNL = (root, Array) => {
   if (root) {
     RNL(root.right, Array);
@@ -66,11 +23,20 @@ const RNL = (root, Array) => {
   }
 };
 
+const NRL = (root, Array, valueID) => {
+  if (root) {
+    if (root.value.IDCode !== valueID)
+      Array.push(root.value);
+    NRL(root.right, Array, valueID);
+    NRL(root.left, Array, valueID);
+  }
+};
+
 module.exports = class BinaryTree {
   constructor() {
     this.root = null;
   }
-  create(value) {
+  enqueue(value) {
     const newNode = new Node(value);
     if (!this.root) {
       this.root = newNode;
@@ -89,22 +55,27 @@ module.exports = class BinaryTree {
         current.count++;
         return this;
       }
-      if (value.disease.prioritized < current.value.disease.prioritized) addSide("left");
+      if (value.disease.prioritized > current.value.disease.prioritized) addSide("left");
+      else if(value.disease.prioritized === current.value.disease.prioritized) addSide("left");
       else addSide("right");
     }
   }
-  find = (value) => {
-    return findInRoot(this.root, value);
+  find = (valueID) => {
+    return this.Return().find((element) => element.IDCode === valueID);
   };
-  remove = (value) => {
-    if (this.find(value)) {
-      removeNode(this.root, value);
-      return value;
+  remove = (valueID) => {
+    if (this.find(valueID)) {
+      const Data = [];
+      var temp = this.find(valueID);
+      NRL(this.root, Data, valueID);
+      this.root = null;
+      Data.forEach(element => this.enqueue(element))
+      return temp;
     }
     return null;
   };
-  shift = () => {
-    this.remove(maxValue(this.root));
+  dequeue = () => {
+    return this.remove(maxValue(this.root).IDCode);
   };
   Return = () => {
     const Data = [];

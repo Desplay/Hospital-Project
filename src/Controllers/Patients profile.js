@@ -1,7 +1,6 @@
 const path = require("path");
 const PathFolder = require("../Utils/Path");
 const PatientsData = require(path.join(PathFolder.pathModels, "Patients"));
-const GetDate = require(path.join(PathFolder.pathModels, "Get time"));
 
 exports.editPatient = (req, res, next) => {
   const View = path.join(PathFolder.pathViews, "Edit Patient.pug");
@@ -17,14 +16,13 @@ exports.editPatient = (req, res, next) => {
       "Data",
       "Kind of diseases.json"
     ))),
-    patient: (patient = PatientsData.findWithID(IDCode)),
+    patient: (patient = PatientsData.findWithIDPatient(IDCode)),
   };
   res.render(View, dataForRender);
 };
 
 exports.postEditPatient = (req, res, next) => {
   const temp = JSON.parse(JSON.stringify(req.body));
-  temp.date = GetDate.time();
-  PatientsData.edit(temp);
+  PatientsData.editPatient(temp);
   res.redirect("/lobby");
 };

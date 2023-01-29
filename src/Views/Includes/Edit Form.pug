@@ -6,32 +6,32 @@
                 h2.text-center.mb-lg-3.mb-2 EDIT PATIENT
                 form(action="/edit-patient/submit" role="form" id="form" name="form" method="post")
                     .row
-                        - var IDCode = patient.IDCode;
-                        input(type="hidden" name="ID" id="ID" value=IDCode)
                         .col-lg-6.cod-12
-                            - var name = patient.Patient.name;
+                            - var name = patient.name;
                             input(type="text" name="name" id="name" class="form-control" placeholder="Full name" value=name required)
                         .col-lg-6.cod-12
-                            - var age = patient.Patient.age;
+                            - var age = patient.age;
                             input(type="age" name="age" id="age" pattern="{1-100}" class="form-control" placeholder="Age" value=age required)
                         .col-lg-6.cod-12
-                            - var gender = patient.Patient.gender;
+                            - var gender = patient.gender;
                             select(type="gender" name="gender" class="form-control" required)
-                                option #{gender}
+                                option(value=gender) #{gender.value}
                                 each value in datagenders
-                                    - var check = gender !== value.value;
+                                    - var check = gender.value !== value.value;
                                     if check
-                                        option=value.value
+                                        option(value=value) #{value.value}
                         .col-lg-6.cod-12
-                            - var disease = patient.Patient.disease;
+                            - var disease = patient.disease;
                             select(type="disease" name="disease" class="form-control" required)
-                                option #{disease}
+                                option(value=disease) #{disease.name}
                                 each value in datadiseases
-                                    - var check = disease !== value.disease;
+                                    - var check = disease.name !== value.name;
                                     if check
-                                        option=value.disease
+                                        option(value=value) #{value.name}
                         .col-lg-12.cod-12
-                            - var message = patient.Patient.message;
+                            - var message = patient.message;
                             textarea(class="form-control" rows="5" id="message" name="message" placeholder="Additional Message") #{message}
+                        - var IDCode = patient.IDCode;
+                        input(type="hidden" name="IDCode" id="IDCode" value=IDCode)
                         .col-lg-3.col-md-4.col-6.mx-auto.text-center
                             button(type="submit" class="form-control" id="submit-button") Submit

@@ -16,9 +16,9 @@ html(lang="en")
         .container
                 img(src="./Templates/images/profile.png" class="img-fluid" alt="" style="margin-left:auto;margin-right:auto;margin-bottom:30px;display:block;width:300px;height:auto;")
                 h2.text-center.mb-lg-3.mb-2.text-uppercase DOCTOR #{datadoctors.Doctor.name}
-        - var check = datadoctors.Doctor.patients.length !== 0;
-        if(check)
-            include Includes/PatientsTreated
+        //- - var check = datadoctors.treatPatients.length() !== 0;
+        //- if(check)
+        //-     include Includes/PatientsTreated
         footer.site-footer.section-padding
             include Includes/Footer
 include Includes/Script Tail
