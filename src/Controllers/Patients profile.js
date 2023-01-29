@@ -6,17 +6,9 @@ exports.editPatient = (req, res, next) => {
   const View = path.join(PathFolder.pathViews, "Edit Patient.pug");
   const IDCode = req.params.patientIDCode;
   const dataForRender = {
-    datagenders: (datagenders = require(path.join(
-      PathFolder.pathData,
-      "Data",
-      "Genders.json"
-    ))),
-    datadiseases: (datadiseases = require(path.join(
-      PathFolder.pathData,
-      "Data",
-      "Kind of diseases.json"
-    ))),
-    patient: (patient = PatientsData.findWithIDPatient(IDCode)),
+    datagenders: (datagenders = require(path.join(PathFolder.pathData, "Data", "Genders.json"))),
+    datadiseases: (datadiseases = require(path.join(PathFolder.pathData, "Data", "Kind of diseases.json"))),
+    patient: PatientsData.findWithIDPatient(IDCode),
   };
   res.render(View, dataForRender);
 };

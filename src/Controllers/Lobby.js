@@ -8,7 +8,7 @@ exports.getLobby = (req, res, next) => {
   const dataForRender = {
     datagenders: (datagenders = require(path.join(PathFolder.pathData, "Data", "Genders.json"))),
     datadiseases: (datadiseases = require(path.join(PathFolder.pathData, "Data", "Kind of diseases.json"))),
-    datapatients: (datapatients = ReturnDataPatientsLobby()),
+    datapatients: ReturnDataPatientsLobby(),
   };
   res.render(Path, dataForRender);
 };

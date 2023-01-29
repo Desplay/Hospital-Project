@@ -1,4 +1,4 @@
-.container-fluid
+.container-fluid#TablePatients
     .card.shadow.mb-4
         .card-header.py-3
             h6(class="m-0 font-weight-bold text-primary") Patients Treated
@@ -29,18 +29,3 @@
                                         th Additional message
                                         th
                                 tbody
-                                    - var x = 0;
-                                    each patient in datapatients
-                                        - var check = patient.treatedBy === datadoctors.Doctor.ID
-                                        if(check)
-                                            tr
-                                                td #{++x}
-                                                td #{patient.Patient.Patient.name}
-                                                td #{patient.Patient.Patient.age}
-                                                td #{patient.Patient.Patient.gender}
-                                                td #{patient.Patient.Patient.date}
-                                                td #{patient.Patient.Patient.disease}
-                                                td #{patient.Patient.Patient.message}
-                                                td
-                                                    - var link =
-                                                    a(href=link)._parent Done

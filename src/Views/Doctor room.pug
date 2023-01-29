@@ -14,11 +14,13 @@ html(lang="en")
                             li.nav-item
                                 a.nav-link(href='/lobby') Lobby Room
         .container
-                img(src="./Templates/images/profile.png" class="img-fluid" alt="" style="margin-left:auto;margin-right:auto;margin-bottom:30px;display:block;width:300px;height:auto;")
-                h2.text-center.mb-lg-3.mb-2.text-uppercase DOCTOR #{datadoctors.Doctor.name}
-        //- - var check = datadoctors.treatPatients.length() !== 0;
-        //- if(check)
-        //-     include Includes/PatientsTreated
+            img(src="./Templates/images/profile.png" class="img-fluid" alt="" style="margin-left:auto;margin-right:auto;margin-bottom:30px;display:block;width:300px;height:auto;")
+            h2.text-center.mb-lg-3.mb-2.text-uppercase DOCTOR #{datadoctors.Doctor.name}
+            p.d-none#IDDoctor #{datadoctors.Doctor.ID}
+        include Includes/PatientsTreated
+        script(src="/socket.io/socket.io.js")
+        script(src="./Socket.IO Client/doctorRoom.sio.js")
+            
         footer.site-footer.section-padding
             include Includes/Footer
 include Includes/Script Tail

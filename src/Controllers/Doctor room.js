@@ -6,7 +6,7 @@ exports.getDoctor = (req, res, next) => {
   const View = path.join(PathFolder.pathViews, "Doctor room.pug");
   const IDCode = req.params.doctorID;
   const DataForRender = {
-    datadoctors: (datadoctors = DoctorsData.findWithID(IDCode)),
+    datadoctors: DoctorsData.findWithID(IDCode),
   };
   res.render(View, DataForRender);
 };

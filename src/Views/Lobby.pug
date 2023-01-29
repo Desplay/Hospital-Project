@@ -16,6 +16,8 @@ html(lang="en")
         section.section-padding
             include Includes/Form
             include Includes/Table to Lobby
+            script(src="/socket.io/socket.io.js")
+            script(src="./Socket.IO Client/lobby.sio.js")
     footer.site-footer.section-padding
         include Includes/Footer
     include Includes/Script Tail

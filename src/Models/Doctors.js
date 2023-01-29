@@ -18,7 +18,7 @@ const CreateDoctor = () => {
 };
 CreateDoctor();
 
-const AddPatient = (inputDoctor, inputPatient) => {
+const addPatient = (inputDoctor, inputPatient) => {
   return inputDoctor.treatPatients.enqueue(inputPatient);
 };
 
@@ -26,10 +26,12 @@ const checkTreat = (inputPatient) => {
   return Doctor.find((element) => element.Doctor.specialist === inputPatient.disease.specialist && element.Doctor.slot > element.treatPatients.Return().length);
 };
 
-const findWithID = (inputIDCode) => {};
+const findWithID = (inputIDCode) => {
+  return Doctor.find((element) => element.Doctor.ID == inputIDCode);
+};
 
-const DataRender = () => {
+const dataRender = () => {
   return Doctor;
 };
 
-module.exports = { DataRender, AddPatient, checkTreat, findWithID };
+module.exports = { dataRender, addPatient, checkTreat, findWithID };

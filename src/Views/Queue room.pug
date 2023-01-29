@@ -18,6 +18,8 @@ html(lang="en")
                     each doctor in datadoctors
                         include Includes/Card Doctor
                 include Includes/Table to Queue
+                script(src="/socket.io/socket.io.js")
+                script(src="/Socket.IO Client/queueRoom.sio.js")
     footer.site-footer.section-padding
         include Includes/Footer
 include Includes/Script Tail

@@ -18,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", "pug");
 app.use(express.static(PathFolder.pathData));
 
-SocketIO(io, app);
+SocketIO(io);
+
 
 server.listen(port, () => {
   console.log("server starting on port " + port);
