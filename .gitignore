@@ -1,3 +1,4 @@
-.vscode
+# ignore node-modules
+
 node_modules
 test.js
