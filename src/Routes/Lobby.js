@@ -7,6 +7,7 @@ const controller = require(path.join(PathFolder.pathControllers, "Lobby"));
 const router = express.Router();
 
 router.get("/lobby", controller.getLobby);
+router.post("/lobby/pop", controller.popPatient)
 router.post("/lobby/submit", controller.postAddPatient);
 
 module.exports = router;

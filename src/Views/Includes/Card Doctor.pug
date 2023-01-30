@@ -8,11 +8,9 @@
                         .text-xs.font-weight-bold.text-info.text-uppercase.mb-1 Doctor #{doctor.Doctor.name}
                         .row.no-gutters.align-items-center
                             .col-auto
-                                - var percent ="width: " + Math.floor(doctor.Doctor.patients.length / doctor.Doctor.slot * 100) + '%';
-                                - var slot_empty = doctor.Doctor.patients.length + '/' + doctor.Doctor.slot;
-                                .h5.mb-0.mr-3.font-weight-bold.text-gray-800 #{slot_empty}
+                                .h5.mb-0.mr-3.font-weight-bold.text-gray-800
                             .col
                                 .progress.progress-sm.mr-2
-                                    div(class="progress-bar bg-info" role="progressbar" style=percent aria-valuenow="1" aria-valuemin="0" aria-valuemax="3")
+                                    div(class="progress-bar bg-info" role="progressbar" style="width:0%")
                     .col-auto
                         i.fas.fa-user-doctor.fa-2x.text-gray-300

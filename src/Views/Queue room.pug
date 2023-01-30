@@ -17,17 +17,9 @@ html(lang="en")
                 .row
                     each doctor in datadoctors
                         include Includes/Card Doctor
-            - var check = datapatients.length > 0
-            if(check)
-                .container-fluid
-                    .col-xl-3.col-md-6.mb-4
-                        h3.m-0.font-weight-bold.text-primary.text-gray-800 Patients in queue room to be moved to the doctor's room
-                        .my-2
-                            a(href="/queue-room/submit" class="btn btn-secondary btn-icon-split")
-                                span(class="icon text-gray-600")
-                                    i(class="fas fa-arrow-right")
-                                span(class="text") Put patients to doctor
                 include Includes/Table to Queue
+                script(src="/socket.io/socket.io.js")
+                script(src="/Socket.IO Client/queueRoom.sio.js")
     footer.site-footer.section-padding
         include Includes/Footer
 include Includes/Script Tail

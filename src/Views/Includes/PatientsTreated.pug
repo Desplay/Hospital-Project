@@ -1,7 +1,15 @@
-.container-fluid
+.container-fluid#TablePatients
     .card.shadow.mb-4
         .card-header.py-3
-            h6(class="m-0 font-weight-bold text-primary") Patients Treated
+            .card-header.py-3.d-flex.justify-content-between.align-items-center
+                h4(class="m-0 font-weight-bold text-primary") Patients Treated
+                .my-2
+                - var link = "/doctor/submit?DoctorID=" + datadoctors.Doctor.ID;
+                    form(action=link role="form" id="form" name="form" method="post")
+                        button(type="submit" id="submit-button").btn.btn-primary.btn-icon-split.form-control
+                            span.text Done First Patients
+                            span.icon.text-gray-600
+                                i.fas.fa-arrow-right
         .card-body
             .table-responsive
                 .dataTables_wrapper.dt-bootstrap4
@@ -29,18 +37,3 @@
                                         th Additional message
                                         th
                                 tbody
-                                    - var x = 0;
-                                    each patient in datapatients
-                                        - var check = patient.treatedBy === datadoctors.Doctor.ID
-                                        if(check)
-                                            tr
-                                                td #{++x}
-                                                td #{patient.Patient.Patient.name}
-                                                td #{patient.Patient.Patient.age}
-                                                td #{patient.Patient.Patient.gender}
-                                                td #{patient.Patient.Patient.date}
-                                                td #{patient.Patient.Patient.disease}
-                                                td #{patient.Patient.Patient.message}
-                                                td
-                                                    - var link = "/doctor-" + datadoctors.Doctor.ID + "-" + patient.ID +"/submit";
-                                                    a(href=link)._parent Done

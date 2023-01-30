@@ -13,3 +13,7 @@ exports.time = () => {
   const Year = temp.getFullYear();
   return Hour + ":" + Min + " - " + Day + "/" + Month + "/" + Year;
 };
+
+exports.fullFormat = () => {
+  return Date.now();
+}
