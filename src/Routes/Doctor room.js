@@ -9,6 +9,6 @@ const controller = require(path.join(
 ));
 
 router.get("/doctor-:doctorID", controller.getDoctor);
-router.get("/doctor-:ID/submit", controller.postPopPatient);
+router.post("/doctor/submit?:params", controller.postPopPatient);
 
 module.exports = router;

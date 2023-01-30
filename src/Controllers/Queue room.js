@@ -16,6 +16,5 @@ exports.postMovePatients = (req, res, next) => {
   if (DoctorTreat) {
     DoctorsData.addPatient(DoctorTreat, PatientsData.popPatientQueue());
   }
-  console.log(DoctorsData.dataRender());
   res.redirect("/queue-room");
 };

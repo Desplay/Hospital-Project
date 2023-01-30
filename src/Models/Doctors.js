@@ -26,6 +26,8 @@ const checkTreat = (inputPatient) => {
   return Doctor.find((element) => element.Doctor.specialist === inputPatient.disease.specialist && element.Doctor.slot > element.treatPatients.Return().length);
 };
 
+const checkThisDoctor = (inputPatient) => {}
+
 const findWithID = (inputIDCode) => {
   return Doctor.find((element) => element.Doctor.ID == inputIDCode);
 };

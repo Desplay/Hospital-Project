@@ -30,11 +30,19 @@ const popPatientLobby = () => {
 
 const firstPatientQueue = () => {
   return PatientsReadyTreat.queue.value;
-}
+};
 
 const popPatientQueue = () => {
   return PatientsReadyTreat.dequeue();
-}
+};
+
+const checkPatientWithSpecialist = (inputSpecialist) => {
+  return PatientsReadyTreat.Return().find((element) => element.disease.specialist === inputSpecialist);
+};
+
+const movePatientFromDoctorRequest = (inputPatient) => {
+  PatientsReadyTreat.remove(inputPatient);
+};
 
 const ReturnDataPatientsLobby = () => {
   return PatientsInLobby.Return();
@@ -42,6 +50,17 @@ const ReturnDataPatientsLobby = () => {
 
 const ReturnDataPatientsQueue = () => {
   return PatientsReadyTreat.Return();
-}
+};
 
-module.exports = { CreatePatient, findWithIDPatient, editPatient, firstPatientQueue, popPatientLobby, popPatientQueue, ReturnDataPatientsLobby, ReturnDataPatientsQueue };
+module.exports = {
+  movePatientFromDoctorRequest,
+  checkPatientWithSpecialist,
+  CreatePatient,
+  findWithIDPatient,
+  editPatient,
+  firstPatientQueue,
+  popPatientLobby,
+  popPatientQueue,
+  ReturnDataPatientsLobby,
+  ReturnDataPatientsQueue,
+};

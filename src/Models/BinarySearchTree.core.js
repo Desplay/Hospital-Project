@@ -23,16 +23,18 @@ const RNL = (root, Array) => {
   }
 };
 
+const checkID = (value1, value2) => {
+  return value1.IDCode !== value2;
+};
+
 const NRL = (root, Array, valueID) => {
   if (root) {
-    if (root.value.IDCode !== valueID)
-      Array.push(root.value);
+    if (checkID(root.value, valueID)) Array.push(root.value);
     NRL(root.right, Array, valueID);
     NRL(root.left, Array, valueID);
   }
 };
-
-module.exports = class BinaryTree {
+class BinaryTree {
   constructor() {
     this.root = null;
   }
@@ -56,7 +58,7 @@ module.exports = class BinaryTree {
         return this;
       }
       if (value.disease.prioritized > current.value.disease.prioritized) addSide("left");
-      else if(value.disease.prioritized === current.value.disease.prioritized) addSide("left");
+      else if (value.disease.prioritized === current.value.disease.prioritized) addSide("left");
       else addSide("right");
     }
   }
@@ -69,7 +71,7 @@ module.exports = class BinaryTree {
       var temp = this.find(valueID);
       NRL(this.root, Data, valueID);
       this.root = null;
-      Data.forEach(element => this.enqueue(element))
+      Data.forEach((element) => this.enqueue(element));
       return temp;
     }
     return null;
@@ -82,4 +84,6 @@ module.exports = class BinaryTree {
     RNL(this.root, Data);
     return Data;
   };
-};
+}
+
+module.exports = BinaryTree;

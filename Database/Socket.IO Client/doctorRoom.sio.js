@@ -30,9 +30,7 @@ const refresh = (dataPatients) => {
     let Message = document.createElement("td");
     Message.textContent = element.message;
 
-    // td
-    // - var link =
-    // a(href=link)._parent Done
+    let Treat = document.createElement("td");
 
     Row.appendChild(Number);
     Row.appendChild(Name);
@@ -41,8 +39,16 @@ const refresh = (dataPatients) => {
     Row.appendChild(Date);
     Row.appendChild(Disease);
     Row.appendChild(Message);
+    Row.appendChild(Treat)
     table.appendChild(Row);
   });
+
+  let firstRows = table.rows.item(0).getElementsByTagName("td");
+  firstRows.item(firstRows.length-1).textContent = "Now treating";
+  for(let i = 0; i < firstRows.length; i++) {
+    firstRows.item(i).style.fontWeight = "bold";
+    firstRows.item(i).style.color = "red";
+  }
 };
 
 socket.on("syncDoctorRoom", () => {
