@@ -8,17 +8,17 @@
                             .col-lg-6.cod-12
                                 input(type="text" name="name" id="name" class="form-control" placeholder="Full name" required)
                             .col-lg-6.cod-12
-                                input(type="age" name="age" id="age" pattern="{1-100}" class="form-control" placeholder="Age" required)
+                                input(type="age" name="age" id="age" class="form-control" placeholder="Age" required)
                             .col-lg-6.cod-12
                                 select(type="gender" name="gender" class="form-control" required)
-                                    option Choose your gender
+                                    option(style="display: none;" value="" required) Choose your gender
                                     each value in datagenders
-                                        option=value.value
+                                        option(value=value) #{value.value}
                             .col-lg-6.cod-12
                                 select(type="disease" name="disease" class="form-control" required)
-                                    option Choose your disease
+                                    option(style="display: none;" value="" required) Choose your disease
                                     each value in datadiseases
-                                        option=value.disease
+                                        option(value=value) #{value.name}
                             .col-lg-12.cod-12
                                 textarea(class="form-control" rows="5" id="message" name="message" placeholder="Additional Message")
                             .col-lg-3.col-md-4.col-6.mx-auto.text-center

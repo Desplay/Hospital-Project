@@ -15,9 +15,9 @@ html(lang="en")
                                 a.navbar-brand.d-none.d-lg-block(href='/lobby') Lobby Room
         section.section-padding
             include Includes/Form
-        - var check = datapatients.length > 0
-        if(check)
             include Includes/Table to Lobby
+            script(src="/socket.io/socket.io.js")
+            script(src="./Client/lobby.sio.js")
     footer.site-footer.section-padding
         include Includes/Footer
-include Includes/Script Tail
+    include Includes/Script Tail

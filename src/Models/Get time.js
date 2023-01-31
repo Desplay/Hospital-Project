@@ -5,11 +5,15 @@ const check = (input) => {
 }
 
 exports.time = () => {
-  const temp = new Date();
-  const Min = check(temp.getMinutes());
-  const Hour = check(temp.getHours());
-  const Day = temp.getDate();
-  const Month = temp.getMonth() + 1;
-  const Year = temp.getFullYear();
+  const Time = new Date();
+  const Min = check(Time.getMinutes());
+  const Hour = check(Time.getHours());
+  const Day = Time.getDate();
+  const Month = Time.getMonth() + 1;
+  const Year = Time.getFullYear();
   return Hour + ":" + Min + " - " + Day + "/" + Month + "/" + Year;
 };
+
+exports.fullFormat = () => {
+  return Date.now();
+}

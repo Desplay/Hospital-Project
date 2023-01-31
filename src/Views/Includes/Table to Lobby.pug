@@ -1,7 +1,13 @@
-.container-fluid
+.container-fluid#TablePatients
     .card.shadow.mb-4
-        .card-header.py-3
-            h6(class="m-0 font-weight-bold text-primary") Disease level table
+        .card-header.py-3.d-flex.justify-content-between.align-items-center
+            h4(class="m-0 font-weight-bold text-primary") Disease level table
+            form(action="/lobby/pop" role="form" id="form" name="form" method="post")
+                button(type="submit" id="submit-button").btn.btn-primary.btn-icon-split.form-control
+                    span.text Move Patients
+                    span.icon.text-white-50
+                        i.fas.fa-arrow-right
+
         .card-body
             .table-responsive
                 .dataTables_wrapper.dt-bootstrap4
@@ -27,17 +33,3 @@
                                         th Disease
                                         th Additional message
                                 tbody
-                                    - var x = 0;
-                                    each patient in datapatients
-                                        - var check = x < 3;
-                                            if(check)
-                                                tr
-                                                    td #{++x}
-                                                    td 
-                                                        - var link = "/edit-patient-" + patient.IDCode
-                                                        a(href=link)._parent #{patient.Patient.name}
-                                                    td #{patient.Patient.age}
-                                                    td #{patient.Patient.gender}
-                                                    td #{patient.Patient.date}
-                                                    td #{patient.Patient.disease}
-                                                    td #{patient.Patient.message}
