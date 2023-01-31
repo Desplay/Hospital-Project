@@ -34,7 +34,7 @@ const NRL = (root, Array, valueID) => {
     NRL(root.left, Array, valueID);
   }
 };
-class BinaryTree {
+class Heap {
   constructor() {
     this.root = null;
   }
@@ -86,4 +86,4 @@ class BinaryTree {
   };
 }
 
-module.exports = BinaryTree;
+module.exports = Heap;

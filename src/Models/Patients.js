@@ -1,4 +1,4 @@
-const PriotityQueue = require("./BinarySearchTree.core");
+const PriotityQueue = require("./Heap.core");
 const Queue = require("./Queue.core");
 const generateIDCode = require("./Generate Code");
 const GetDate = require("./Get time");

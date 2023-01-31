@@ -14,7 +14,7 @@ exports.editPatient = (req, res, next) => {
 };
 
 exports.postEditPatient = (req, res, next) => {
-  const temp = JSON.parse(JSON.stringify(req.body));
-  PatientsData.editPatient(temp);
+  const patientAfterEdit = JSON.parse(JSON.stringify(req.body));
+  PatientsData.editPatient(patientAfterEdit);
   res.redirect("/lobby");
 };

@@ -14,8 +14,8 @@ exports.getLobby = (req, res, next) => {
 };
 
 exports.postAddPatient = (req, res, next) => {
-  const temp = JSON.parse(JSON.stringify(req.body));
-  CreatePatient(temp);
+  const patient = JSON.parse(JSON.stringify(req.body));
+  CreatePatient(patient);
   res.redirect("/lobby");
 };
 

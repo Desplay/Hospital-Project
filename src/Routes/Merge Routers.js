@@ -3,8 +3,8 @@ const PathFolder = require("../Utils/Path");
 
 const Lobby = require(path.join(PathFolder.pathRoutes, "Lobby"));
 const Menu = require(path.join(PathFolder.pathRoutes, "Menu"));
-const QueueRoom = require(path.join(PathFolder.pathRoutes, "Queue room"));
-const DoctorRoom = require(path.join(PathFolder.pathRoutes, "Doctor room"));
+const QueueRoom = require(path.join(PathFolder.pathRoutes, "QueueRoom"));
+const DoctorRoom = require(path.join(PathFolder.pathRoutes, "DoctorRoom"));
 const PatientProfile = require(path.join(PathFolder.pathRoutes, "Patients profile"));
 
 const router = (app) => {

@@ -3,10 +3,7 @@ const path = require("path");
 const PathFolder = require("../Utils/Path");
 
 const router = express.Router();
-const controller = require(path.join(
-  PathFolder.pathControllers,
-  "Doctor room"
-));
+const controller = require(path.join(PathFolder.pathControllers, "DoctorRoom"));
 
 router.get("/doctor-:doctorID", controller.getDoctor);
 router.post("/doctor/submit?:params", controller.postPopPatient);

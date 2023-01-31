@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const http = require("http");
 const { Server } = require("socket.io");
-const SocketIO = require("./src/Socket.IO Server/Merge socketio");
+const SocketIO = require("./src/Server/Merge socketio");
 
 const router = require(path.join(PathFolder.pathRoutes, "Merge Routers"));
 
