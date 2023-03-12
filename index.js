@@ -20,7 +20,6 @@ app.use(express.static(PathFolder.pathData));
 
 SocketIO(io);
 
-
 server.listen(port, () => {
   console.log("server starting on port " + port);
 });
